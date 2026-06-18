@@ -15,17 +15,17 @@ import java.util.UUID;
 @NoArgsConstructor
 public class UrlMapping {
     @Id
-    @Column(name = "id")
+    @Column(name = "id", unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "orginal_url", unique = true)
-    private String original_url;
+    @Column(name = "original_url", unique = true)
+    private String originalUrl;
     @Column(name = "short_token")
     private String shortToken;
     @Column(name = "click_count")
     private Long clickCount;
     @Column(name = "time_created")
     private LocalDateTime createdAt;
-    @Column(name = "externalID")
+    @Column(name = "external_ID")
     private UUID externalID;
 }
