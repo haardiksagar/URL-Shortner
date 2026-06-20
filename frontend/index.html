@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Trimly turns long, unwieldy links into short URLs in seconds."
+    />
+    <title>Trimly — Short links, big reach</title>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="#" aria-label="Trimly home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="img">
+              <path d="M9.5 14.5 14.5 9M7.2 17.8l-1 1a3.54 3.54 0 0 1-5-5l4.2-4.2a3.54 3.54 0 0 1 5 0M16.8 6.2l1-1a3.54 3.54 0 1 1 5 5l-4.2 4.2a3.54 3.54 0 0 1-5 0" />
+            </svg>
+          </span>
+          <span>trimly</span>
+        </a>
+
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a class="header-link" href="#recent-links">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
+            </svg>
+            <span>My links</span>
+          </a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero" aria-labelledby="hero-title">
+          <h1 id="hero-title">Short links.<br /><em>Big reach.</em></h1>
+          <p class="hero-copy">
+            Turn long, unwieldy URLs into clean links worth sharing.
+            No account, no clutter — just paste and go.
+          </p>
+
+          <form class="shortener-card" id="shorten-form" novalidate>
+            <label for="url-input">Paste your long URL</label>
+            <div class="input-row">
+              <div class="url-field">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.7-1.7" />
+                </svg>
+                <input
+                  id="url-input"
+                  name="url"
+                  type="url"
+                  inputmode="url"
+                  autocomplete="url"
+                  placeholder="https://your-very-long-link.com/..."
+                  required
+                  aria-describedby="form-message"
+                />
+              </div>
+              <button class="primary-button" id="submit-button" type="submit">
+                <span class="button-label">Shorten link</span>
+                <span class="spinner" aria-hidden="true"></span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </button>
+            </div>
+            <p class="form-message" id="form-message" role="alert" aria-live="polite"></p>
+          </form>
+
+          <div class="result-card" id="result-card" aria-live="polite" hidden>
+            <div class="result-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6" /></svg>
+            </div>
+            <div class="result-content">
+              <span>Your short link is ready</span>
+              <a id="short-url" href="#" target="_blank" rel="noopener"></a>
+            </div>
+            <div class="result-actions">
+              <button class="icon-button" id="open-button" type="button" aria-label="Open short link" title="Open link">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg>
+              </button>
+              <button class="copy-button" id="copy-button" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="trust-row" aria-label="Service benefits">
+            <span><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></svg> Free to use</span>
+            <span><svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5.2 3.4 9.9 8 11 4.6-1.1 8-5.8 8-11V5l-8-3Z" /><path d="m9 12 2 2 4-4" /></svg> Private by design</span>
+            <span><svg viewBox="0 0 24 24"><path d="m13 2-9 12h8l-1 8 9-12h-8l1-8Z" /></svg> Instant results</span>
+          </div>
+        </section>
+
+        <section class="recent-section" id="recent-links" hidden>
+          <div class="section-heading">
+            <div>
+              <span class="section-kicker">Saved on this device</span>
+              <h2>Recent links</h2>
+            </div>
+            <button class="text-button" id="clear-history" type="button">Clear all</button>
+          </div>
+          <div class="recent-list" id="recent-list"></div>
+        </section>
+      </main>
+
+      <footer>
+        <a class="brand footer-brand" href="#" aria-label="Trimly home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M9.5 14.5 14.5 9M7.2 17.8l-1 1a3.54 3.54 0 0 1-5-5l4.2-4.2a3.54 3.54 0 0 1 5 0M16.8 6.2l1-1a3.54 3.54 0 1 1 5 5l-4.2 4.2a3.54 3.54 0 0 1-5 0" /></svg>
+          </span>
+          <span>trimly</span>
+        </a>
+        <p>Small links, made thoughtfully.</p>
+      </footer>
+    </div>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
